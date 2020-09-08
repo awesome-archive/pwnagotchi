@@ -8,7 +8,6 @@ import logging
 
 import pwnagotchi.plugins as plugins
 import pwnagotchi.ai as ai
-from pwnagotchi.ai.epoch import Epoch
 
 
 class Stats(object):
@@ -88,7 +87,6 @@ class AsyncTrainer(object):
     def __init__(self, config):
         self._config = config
         self._model = None
-        self._epoch = Epoch(config)
         self._is_training = False
         self._training_epochs = 0
         self._nn_path = self._config['ai']['path']
@@ -178,7 +176,7 @@ class AsyncTrainer(object):
                         self.set_training(True, epochs_per_episode)
                         self._model.learn(total_timesteps=epochs_per_episode, callback=self.on_ai_training_step)
                     except Exception as e:
-                        logging.exception("[ai] error while training")
+                        logging.exception("[ai] error while training (%s)", e)
                     finally:
                         self.set_training(False)
                         obs = self._model.env.reset()

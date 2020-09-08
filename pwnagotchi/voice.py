@@ -14,6 +14,9 @@ class Voice:
         translation.install()
         self._ = translation.gettext
 
+    def custom(self, s):
+        return s
+
     def default(self):
         return self._('ZzzzZZzzzzZzzz')
 
@@ -28,6 +31,10 @@ class Voice:
             self._('AI ready.'),
             self._('The neural network is ready.')])
 
+    def on_keys_generation(self):
+        return random.choice([
+            self._('Generating keys, do not turn off ...')])
+
     def on_normal(self):
         return random.choice([
             '',
@@ -35,6 +42,12 @@ class Voice:
 
     def on_free_channel(self, channel):
         return self._('Hey, channel {channel} is free! Your AP will say thanks.').format(channel=channel)
+
+    def on_reading_logs(self, lines_so_far=0):
+        if lines_so_far == 0:
+            return self._('Reading last session logs ...')
+        else:
+            return self._('Read {lines_so_far} log lines so far ...').format(lines_so_far=lines_so_far)
 
     def on_bored(self):
         return random.choice([
@@ -54,6 +67,13 @@ class Voice:
             self._('I\'m sad'),
             '...'])
 
+    def on_angry(self):
+        # passive aggressive or not? :D
+        return random.choice([
+            '...',
+            self._('Leave me alone ...'),
+            self._('I\'m mad at you!')])
+
     def on_excited(self):
         return random.choice([
             self._('I\'m living the life!'),
@@ -63,9 +83,14 @@ class Voice:
             self._('My crime is that of curiosity ...')])
 
     def on_new_peer(self, peer):
-        return random.choice([
-            self._('Hello {name}! Nice to meet you. {name}').format(name=peer.name()),
-            self._('Unit {name} is nearby! {name}').format(name=peer.name())])
+        if peer.first_encounter():
+            return random.choice([
+                self._('Hello {name}! Nice to meet you.').format(name=peer.name())])
+        else:
+            return random.choice([
+                self._('Yo {name}! Sup?').format(name=peer.name()),
+                self._('Hey {name} how are you doing?').format(name=peer.name()),
+                self._('Unit {name} is nearby!').format(name=peer.name())])
 
     def on_lost_peer(self, peer):
         return random.choice([
@@ -77,6 +102,11 @@ class Voice:
             self._('Whoops ... {name} is gone.').format(name=who),
             self._('{name} missed!').format(name=who),
             self._('Missed!')])
+
+    def on_grateful(self):
+        return random.choice([
+            self._('Good friends are a blessing!'),
+            self._('I love my friends!')])
 
     def on_lonely(self):
         return random.choice([
@@ -122,26 +152,33 @@ class Voice:
         s = 's' if new_shakes > 1 else ''
         return self._('Cool, we got {num} new handshake{plural}!').format(num=new_shakes, plural=s)
 
-    def on_rebooting(self):
-        return self._("Ops, something went wrong ... Rebooting ...")
+    def on_unread_messages(self, count, total):
+        s = 's' if count > 1 else ''
+        return self._('You have {count} new message{plural}!').format(count=count, plural=s)
 
-    def on_log(self, log):
-        status = self._('Kicked {num} stations\n').format(num=log.deauthed)
-        status += self._('Made {num} new friends\n').format(num=log.associated)
-        status += self._('Got {num} handshakes\n').format(num=log.handshakes)
-        if log.peers == 1:
+    def on_rebooting(self):
+        return self._("Oops, something went wrong ... Rebooting ...")
+
+    def on_last_session_data(self, last_session):
+        status = self._('Kicked {num} stations\n').format(num=last_session.deauthed)
+        if last_session.associated > 999:
+            status += self._('Made >999 new friends\n')
+        else:
+            status += self._('Made {num} new friends\n').format(num=last_session.associated)
+        status += self._('Got {num} handshakes\n').format(num=last_session.handshakes)
+        if last_session.peers == 1:
             status += self._('Met 1 peer')
-        elif log.peers > 0:
-            status += self._('Met {num} peers').format(num=log.peers)
+        elif last_session.peers > 0:
+            status += self._('Met {num} peers').format(num=last_session.peers)
         return status
 
-    def on_log_tweet(self, log):
+    def on_last_session_tweet(self, last_session):
         return self._(
             'I\'ve been pwning for {duration} and kicked {deauthed} clients! I\'ve also met {associated} new friends and ate {handshakes} handshakes! #pwnagotchi #pwnlog #pwnlife #hacktheplanet #skynet').format(
-            duration=log.duration_human,
-            deauthed=log.deauthed,
-            associated=log.associated,
-            handshakes=log.handshakes)
+            duration=last_session.duration_human,
+            deauthed=last_session.deauthed,
+            associated=last_session.associated,
+            handshakes=last_session.handshakes)
 
     def hhmmss(self, count, fmt):
         if count > 1:

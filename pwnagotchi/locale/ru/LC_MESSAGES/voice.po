@@ -1,45 +1,57 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Pwnagotchi Russian translation.
+# Copyright (C) 2019
+# This file is distributed under the same license as the pwnagotchi package.
 # FIRST AUTHOR <25989971+adolfaka@users.noreply.github.com>, 2019.
-#
+# Second author <https://github.com/mbgroot>, 2019
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-03 16:47+0200\n"
-"PO-Revision-Date: 2019-10-05 18:50+0300\n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
+"Project-Id-Version: Pwnagotchi Russian translation v 0.0.2\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
-"Last-Translator: Elliot Manson\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"Language: ru_RU\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Language: ru\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: voice.po\n"
 
 msgid "ZzzzZZzzzzZzzz"
-msgstr "ZzzzZZzzzzZzzz"
+msgstr "Хрррр..."
 
 msgid "Hi, I'm Pwnagotchi! Starting ..."
-msgstr "Привет, я Pwnagotchi! Поехали …"
+msgstr "Привет, я Pwnagotchi! Стартуем!"
 
 msgid "New day, new hunt, new pwns!"
 msgstr "Новый день, новая охота, новые взломы!"
 
 msgid "Hack the Planet!"
-msgstr "Взломаем всю планету!"
+msgstr "Взломай эту Планету!"
 
 msgid "AI ready."
-msgstr "Искусственный интеллект готов."
+msgstr "A.I. готов."
 
 msgid "The neural network is ready."
 msgstr "Нейронная сеть готова."
 
+msgid "Generating keys, do not turn off ..."
+msgstr "Генерация ключей, не выключайте..."
+
 #, python-brace-format
 msgid "Hey, channel {channel} is free! Your AP will say thanks."
 msgstr "Эй, канал {channel} свободен! Ваша точка доступа скажет спасибо."
+
+msgid "Reading last session logs ..."
+msgstr "Чтение логов последнего сеанса..."
+
+#, python-brace-format
+msgid "Read {lines_so_far} log lines so far ..."
+msgstr "Чтение {lines_so_far} строк журнала..."
 
 msgid "I'm bored ..."
 msgstr "Мне скучно …"
@@ -48,7 +60,7 @@ msgid "Let's go for a walk!"
 msgstr "Пойдем прогуляемся!"
 
 msgid "This is the best day of my life!"
-msgstr "Это лучший день в моей жизни!"
+msgstr "Лучший день в моей жизни!"
 
 msgid "Shitty day :/"
 msgstr "Дерьмовый день :/"
@@ -62,28 +74,42 @@ msgstr "Мне очень грустно …"
 msgid "I'm sad"
 msgstr "Мне грустно"
 
+msgid "Leave me alone ..."
+msgstr "Оставь меня в покое..."
+
+msgid "I'm mad at you!"
+msgstr "Я зол на тебя!"
+
 msgid "I'm living the life!"
-msgstr "Я живу своей жизнью!"
+msgstr "Живу полной жизнью!"
 
 msgid "I pwn therefore I am."
 msgstr "Я взламываю, поэтому я существую."
 
 msgid "So many networks!!!"
-msgstr "Так, много сетей!!!"
+msgstr "Так много сетей!!!"
 
 msgid "I'm having so much fun!"
 msgstr "Мне так весело!"
 
 msgid "My crime is that of curiosity ..."
-msgstr "Моё преступление - это любопытство …"
+msgstr "Моё преступление - это любопытство…"
 
 #, python-brace-format
 msgid "Hello {name}! Nice to meet you. {name}"
-msgstr "Привет, {name}! Приятно познакомиться. {name}"
+msgstr "Привет, {name}! Рад встрече с тобой!"
 
 #, python-brace-format
 msgid "Unit {name} is nearby! {name}"
-msgstr "Цель {name} близко! {name}"
+msgstr "Цель {name} близко!"
+
+#, python-brace-format
+msgid "Hey {name} how are you doing?"
+msgstr "Хэй {name}! Как дела?"
+
+#, python-brace-format
+msgid "Unit {name} is nearby!"
+msgstr "Цель {name} рядом!"
 
 #, python-brace-format
 msgid "Uhm ... goodbye {name}"
@@ -91,11 +117,11 @@ msgstr "Хм … до свидания {name}"
 
 #, python-brace-format
 msgid "{name} is gone ..."
-msgstr "{name} исчезла …"
+msgstr "{name} ушла…"
 
 #, python-brace-format
 msgid "Whoops ... {name} is gone."
-msgstr "Упс … {name} исчезла."
+msgstr "Упс… {name} исчезла."
 
 #, python-brace-format
 msgid "{name} missed!"
@@ -104,11 +130,17 @@ msgstr "{name} упустил!"
 msgid "Missed!"
 msgstr "Промахнулся!"
 
+msgid "Good friends are a blessing!"
+msgstr "Хорошие друзья - это благословение!"
+
+msgid "I love my friends!"
+msgstr "Я люблю своих друзей!"
+
 msgid "Nobody wants to play with me ..."
-msgstr "Никто не хочет играть со мной …"
+msgstr "Никто не хочет со мной играть ..."
 
 msgid "I feel so alone ..."
-msgstr "Мне так одиноко …"
+msgstr "Я так одинок…"
 
 msgid "Where's everybody?!"
 msgstr "Где все?!"
@@ -118,11 +150,17 @@ msgid "Napping for {secs}s ..."
 msgstr "Дремлет {secs}с …"
 
 msgid "Zzzzz"
-msgstr "Zzzzz"
+msgstr "Хррр..."
 
 #, python-brace-format
 msgid "ZzzZzzz ({secs}s)"
-msgstr "ZzzZzzz ({secs}c)"
+msgstr "Хррррр.. ({secs}c)"
+
+msgid "Good night."
+msgstr "Доброй ночи."
+
+msgid "Zzz"
+msgstr "Хрррр"
 
 #, python-brace-format
 msgid "Waiting for {secs}s ..."
@@ -130,7 +168,7 @@ msgstr "Ждем {secs}c …"
 
 #, python-brace-format
 msgid "Looking around ({secs}s)"
-msgstr "Оглядываюсь вокруг ({secs}с)"
+msgstr "Осматриваюсь вокруг ({secs}с)"
 
 #, python-brace-format
 msgid "Hey {what} let's be friends!"
@@ -160,7 +198,7 @@ msgstr "Кикаю {mac}!"
 msgid "Cool, we got {num} new handshake{plural}!"
 msgstr "Круто, мы получили {num} новое рукопожатие!"
 
-msgid "Ops, something went wrong ... Rebooting ..."
+msgid "Oops, something went wrong ... Rebooting ..."
 msgstr "Ой, что-то пошло не так … Перезагружаюсь …"
 
 #, python-brace-format
@@ -173,7 +211,7 @@ msgstr "Заимел {num} новых друзей\n"
 
 #, python-brace-format
 msgid "Got {num} handshakes\n"
-msgstr "Получил {num} рукопожатие\n"
+msgstr "Получил {num} рукопожатий\n"
 
 msgid "Met 1 peer"
 msgstr "Встретился один знакомый"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-05 14:10+0200\n"
+"POT-Creation-Date: 2019-11-29 21:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,8 +35,18 @@ msgstr ""
 msgid "The neural network is ready."
 msgstr ""
 
+msgid "Generating keys, do not turn off ..."
+msgstr ""
+
 #, python-brace-format
 msgid "Hey, channel {channel} is free! Your AP will say thanks."
+msgstr ""
+
+msgid "Reading last session logs ..."
+msgstr ""
+
+#, python-brace-format
+msgid "Read {lines_so_far} log lines so far ..."
 msgstr ""
 
 msgid "I'm bored ..."
@@ -60,6 +70,12 @@ msgstr ""
 msgid "I'm sad"
 msgstr ""
 
+msgid "Leave me alone ..."
+msgstr ""
+
+msgid "I'm mad at you!"
+msgstr ""
+
 msgid "I'm living the life!"
 msgstr ""
 
@@ -76,11 +92,19 @@ msgid "My crime is that of curiosity ..."
 msgstr ""
 
 #, python-brace-format
-msgid "Hello {name}! Nice to meet you. {name}"
+msgid "Hello {name}! Nice to meet you."
 msgstr ""
 
 #, python-brace-format
-msgid "Unit {name} is nearby! {name}"
+msgid "Yo {name}! Sup?"
+msgstr ""
+
+#, python-brace-format
+msgid "Hey {name} how are you doing?"
+msgstr ""
+
+#, python-brace-format
+msgid "Unit {name} is nearby!"
 msgstr ""
 
 #, python-brace-format
@@ -102,6 +126,12 @@ msgstr ""
 msgid "Missed!"
 msgstr ""
 
+msgid "Good friends are a blessing!"
+msgstr ""
+
+msgid "I love my friends!"
+msgstr ""
+
 msgid "Nobody wants to play with me ..."
 msgstr ""
 
@@ -120,6 +150,12 @@ msgstr ""
 
 #, python-brace-format
 msgid "ZzzZzzz ({secs}s)"
+msgstr ""
+
+msgid "Good night."
+msgstr ""
+
+msgid "Zzz"
 msgstr ""
 
 #, python-brace-format
@@ -158,7 +194,11 @@ msgstr ""
 msgid "Cool, we got {num} new handshake{plural}!"
 msgstr ""
 
-msgid "Ops, something went wrong ... Rebooting ..."
+#, python-brace-format
+msgid "You have {count} new message{plural}!"
+msgstr ""
+
+msgid "Oops, something went wrong ... Rebooting ..."
 msgstr ""
 
 #, python-brace-format

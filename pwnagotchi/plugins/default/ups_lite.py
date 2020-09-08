@@ -1,23 +1,20 @@
 # Based on UPS Lite v1.1 from https://github.com/xenDE
 #
-# funtions for get UPS status - needs enable "i2c" in raspi-config
+# functions for get UPS status - needs enable "i2c" in raspi-config
 #
 # https://github.com/linshuqin329/UPS-Lite
 #
 # For Raspberry Pi Zero Ups Power Expansion Board with Integrated Serial Port S3U4
 # https://www.ebay.de/itm/For-Raspberry-Pi-Zero-Ups-Power-Expansion-Board-with-Integrated-Serial-Port-S3U4/323873804310
 # https://www.aliexpress.com/item/32888533624.html
-__author__ = 'evilsocket@gmail.com'
-__version__ = '1.0.0'
-__name__ = 'ups_lite'
-__license__ = 'GPL3'
-__description__ = 'A plugin that will add a voltage indicator for the UPS Lite v1.1'
-
+import logging
 import struct
 
 from pwnagotchi.ui.components import LabeledValue
 from pwnagotchi.ui.view import BLACK
 import pwnagotchi.ui.fonts as fonts
+import pwnagotchi.plugins as plugins
+import pwnagotchi
 
 
 # TODO: add enable switch in config.yml an cleanup all to the best place
@@ -47,18 +44,30 @@ class UPS:
             return 0.0
 
 
-ups = None
+class UPSLite(plugins.Plugin):
+    __author__ = 'evilsocket@gmail.com'
+    __version__ = '1.0.0'
+    __license__ = 'GPL3'
+    __description__ = 'A plugin that will add a voltage indicator for the UPS Lite v1.1'
 
+    def __init__(self):
+        self.ups = None
 
-def on_loaded():
-    global ups
-    ups = UPS()
+    def on_loaded(self):
+        self.ups = UPS()
 
+    def on_ui_setup(self, ui):
+        ui.add_element('ups', LabeledValue(color=BLACK, label='UPS', value='0%/0V', position=(ui.width() / 2 + 15, 0),
+                                           label_font=fonts.Bold, text_font=fonts.Medium))
 
-def on_ui_setup(ui):
-    ui.add_element('ups', LabeledValue(color=BLACK, label='UPS', value='0%/0V', position=(ui.width() / 2 - 25, 0),
-                                       label_font=fonts.Bold, text_font=fonts.Medium))
+    def on_unload(self, ui):
+        with ui._lock:
+            ui.remove_element('ups')
 
-
-def on_ui_update(ui):
-    ui.set('ups', "%4.2fV/%2i%%" % (ups.voltage(), ups.capacity()))
+    def on_ui_update(self, ui):
+        capacity = self.ups.capacity()
+        ui.set('ups', "%2i%%" % capacity)
+        if capacity <= self.options['shutdown']:
+            logging.info('[ups_lite] Empty battery (<= %s%%): shuting down' % self.options['shutdown'])
+            ui.update(force=True, new_data={'status': 'Battery exhausted, bye ...'})
+            pwnagotchi.shutdown()
